@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Build Go binary 'bootstrap' file inside 'terraform/tf_generated' directory
+# Build Go binary 'bootstrap' file inside project root directory.
 
 set -e
 
