@@ -7,39 +7,54 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/aws/aws-lambda-go/lambda"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 func main() {
+	lambda.Start(func() {
+		log.Println("handler started")
+
+		if err := handler(); err != nil {
+			panic(err)
+		}
+
+		log.Println("handler executed successfully")
+	})
+}
+
+func handler() error {
 	botApiToken := os.Getenv("BOT_API_TOKEN")
 	if botApiToken == "" {
-		log.Panic("missing env: BOT_API_TOKEN")
+		return fmt.Errorf("missing env: BOT_API_TOKEN")
 	}
 
 	myChatIDStr := os.Getenv("MY_CHAT_ID")
 	if myChatIDStr == "" {
-		log.Panic("missing env: MY_CHAT_ID")
+		return fmt.Errorf("missing env: MY_CHAT_ID")
 	}
 
 	myChatID, err := strconv.ParseInt(myChatIDStr, 10, 64)
 	if err != nil {
-		log.Panic("invalid env: MY_CHAT_ID, must be integer value")
+		return fmt.Errorf("invalid env: MY_CHAT_ID, must be integer value")
 	}
 
 	bot, err := tgbotapi.NewBotAPI(botApiToken)
 	if err != nil {
-		log.Panic(err)
+		return err
 	}
 
 	roster, err := getRoster()
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
 
 	err = sendRoster(bot, myChatID, roster)
 	if err != nil {
-		log.Fatalln(err)
+		return err
 	}
+
+	return nil
 }
 
 func sendRoster(bot *tgbotapi.BotAPI, chatID int64, roster string) error {
