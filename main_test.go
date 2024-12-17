@@ -50,6 +50,6 @@ func TestGetWeekAndDayOfCycle(t *testing.T) {
 	}
 
 	if getWeekOfCycle(time.Date(2024, 1, 9, 0, 0, 0, 0, perth), firstDayOfCycle) != secondWeek {
-		t.Errorf("expected: second, got: one")
+		t.Errorf("expected: second, got: first")
 	}
 }
