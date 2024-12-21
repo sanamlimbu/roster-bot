@@ -8,7 +8,7 @@ import (
 func TestGetWeekAndDayOfCycle(t *testing.T) {
 	perth, err := time.LoadLocation("Australia/Perth")
 	if err != nil {
-		t.Errorf(err.Error())
+		t.Errorf("%s", err.Error())
 	}
 
 	firstDayOfCycle := time.Date(2024, 1, 1, 0, 0, 0, 0, perth)
