@@ -6,7 +6,7 @@ var WeekOneRoster = map[string]string{
 	"Wednesday": "7am to 1pm (J) and 3pm - 10pm (B)",
 	"Thursday":  "7am to 1pm (J)",
 	"Friday":    "3pm - 9pm (B)",
-	"Staurday":  "Day off. Hurray!",
+	"Saturday":  "Day off. Hurray!",
 	"Sunday":    "7am - 1pm (J) and 3pm - 9pm (A)",
 }
 
@@ -16,6 +16,6 @@ var WeekTwoRoster = map[string]string{
 	"Wednesday": "7am to 3pm (J)",
 	"Thursday":  "7am - 3pm (J) and 3pm - 9pm (S)",
 	"Friday":    "7am to 1pm (J) and 3pm to 9pm (S)",
-	"Staurday":  "7am to 1pm (J) and 3pm - 9pm (S)",
+	"Saturday":  "7am to 1pm (J) and 3pm - 9pm (S)",
 	"Sunday":    "7am - 3pm (J) and 3pm - 9pm (S)",
 }
